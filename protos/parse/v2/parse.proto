@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.decomp.parsing";
+option java_outer_classname = "ParsingProto";
+option objc_class_prefix = "JPD";
+
+package parsing;
+// version 2
+
+
+service Parser {
+
+  rpc parseAll (ParseRequest) returns (ParseReply) {};
+  rpc getNames (NamesRequest) returns (Names) {};
+  rpc getInteractions (ParseRequest) returns (stream ParseDataResponse) {};
+  rpc getCalls (ParseRequest) returns (stream ParseDataResponse) {};
+  rpc getTFIDF (ParseRequest) returns (stream ParseDataResponse) {};
+  rpc getWordCounts (ParseRequest) returns (stream ParseDataResponse) {};
+}
+
+
+enum Granularity{
+  CLASS = 0;
+  METHOD = 1;
+}
+
+enum Status {
+  PENDING = 0;
+  IN_PROGRESS = 1;
+  SUCCESS = 2;
+  FAILED = 3;
+}
+
+enum Format {
+  PARQUET = 0;
+  CSV = 1;
+  JSON = 2;
+  PICKLE = 3;
+}
+
+message NamesRequest {
+  string appName = 1;
+  string appRepo = 2;
+  string language = 3;
+  Granularity level = 4;
+  optional bool isDistributed = 5;
+
+}
+
+message ParseRequest {
+  string appName = 1;
+  string appRepo = 2;
+  string language = 3;
+  optional Format format = 4;
+  optional Granularity level = 5;
+  optional bool isDistributed = 6;
+}
+
+message ParseReply {
+  Status status = 1;
+}
+
+message Names {
+  repeated string names = 1;
+}
+
+message MetaData {
+  Status status = 1;
+  string name = 2;
+  Format format = 3;
+  int64 column_index = 4;
+  int64 row_index = 5;
+  optional string column_name = 6;
+  optional string row_name = 7;
+}
+
+message File {
+  bytes content = 1;
+}
+
+message ParseDataResponse {
+  oneof response {
+    MetaData metadata = 1;
+    File file = 2;
+  }
+}

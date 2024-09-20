@@ -1,0 +1,141 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+option java_multiple_files = true;
+option java_package = "com.decomp.rldec";
+option java_outer_classname = "RLDecProto";
+option objc_class_prefix = "RLD";
+
+package rldec.v1;
+
+
+service RLDec {
+//  rpc getDecomposition  (TrainRequest) returns (DecompositionResponse) {}; //trains then generates a decomposition
+//  rpc trainModel (TrainRequest) returns (TrainingResponse) {}; //just trains the model
+  rpc decompose(DecompositionRequest) returns (DecompositionResponse) {}; //generates a decomposition with a trained model
+  rpc getModels(ModelsRequest) returns (ModelsResponse) {};
+  rpc getModelDetails(ModelDetailsRequest) returns (ModelDetails) {};
+  rpc getTrainedApps(TrainedAppsRequest) returns (TrainedAppsResponse) {};
+}
+
+message TrainedAppsRequest {}
+
+message TrainedAppsResponse {
+  repeated AppDetails appDetails = 1;
+}
+
+message AppDetails {
+  string appName = 1;
+  string language = 2;
+}
+
+message ModelsRequest {
+  string appName = 1;
+  string language = 2;
+}
+
+message ModelsResponse {
+  repeated ModelDetails models = 3;
+}
+
+message ModelDetailsRequest {
+  string appName = 1;
+  string language = 2;
+  Granularity level = 3;
+  string experimentID = 4;
+}
+
+message ModelDetails {
+  string appName = 1;
+  string language = 2;
+  Granularity level = 3;
+  string experimentID = 4;
+  RLDecApproach approach = 5;
+  repeated AnalysisFeatures features = 6;
+  uint32 numIterations = 7;
+  .google.protobuf.Struct hyperparamsFile = 8;
+}
+
+message DecompositionRequest {
+  string appName = 1;
+  string language = 2;
+  Granularity level = 3;
+  optional string experimentID = 4;
+  optional string path = 5;
+  optional uint32 numEpisodes = 6;
+  optional SelectionStrategy selectionStrategy = 7;
+}
+
+message DecompositionResponse {
+  Status status = 1;
+  string message = 2;
+  optional Decomposition decomposition = 3;
+}
+
+message TrainingResponse {
+  Status status = 1;
+  string message = 2;
+  string experimentID = 3;
+}
+
+enum Status {
+  INITIALIZING = 0;
+  TRAINING = 1;
+  DECOMPOSING = 2;
+  DONE = 3;
+  FAILED = 4;
+}
+
+//message TrainRequest {
+//  string appName = 1;
+//  string language = 2;
+//  Granularity level = 3;
+//  string appRepo = 4;
+//  optional RLDecApproach approach = 5;
+//  optional AnalysisFeatures feature = 6;
+//  optional uint32 numIterations = 7;
+//  optional bool includeEvaluation = 8;
+//  optional string experimentID = 9;
+//  optional string hyperparamsPath = 10;
+//  optional string dataPath = 11;
+//  optional string outputPath = 12;
+//}
+
+enum RLDecApproach {
+  COMBSEQUENTIAL = 0;
+  SEQUENTIAL = 1;
+  FLATTENED = 2;
+}
+
+enum AnalysisFeatures {
+  STRUCTURAL = 0;
+  SEMANTIC = 1;
+  DYNAMIC = 2;
+}
+
+enum SelectionStrategy {
+  BEST = 0;
+  LAST = 1;
+}
+
+message Partition {
+  string name = 1;
+  repeated string classes = 2;
+}
+
+message Decomposition {
+  string name = 1;
+  string appName = 2;
+  string language = 3;
+  string level = 4;
+  repeated Partition partitions = 5;
+  string appRepo = 6;
+}
+
+
+enum Granularity{
+  CLASS = 0;
+  METHOD = 1;
+}
+
+
