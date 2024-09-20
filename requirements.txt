@@ -1,0 +1,11 @@
+numpy>=1.26.4
+scipy>=1.11.4
+pandas<=2.2.0, >=1.5.3
+tifffile>=2024.1.30
+protobuf>=4.25.2
+networkx>=2.8.4
+ray[rllib]==2.9.2
+scikit-learn>=1.2.2
+gymnasium>=0.28.1
+torch>=2.1.0
+grpcio>=1.48.2
