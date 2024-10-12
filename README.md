@@ -187,7 +187,7 @@ If this work was useful for your research, please consider citing it:
 rldec,
 title={Extracting microservices from monolithic systems using deep reinforcement learning},
 journal={Empirical Software Engineering},
-author={khaled sellami and Khaled Sellami and Mohamed Aymen Saied},
+author={khaled sellami and Mohamed Aymen Saied},
 doi={10.1007/s10664-024-10547-4},
 url={http://doi.org/10.1007/s10664-024-10547-4},
 year={2025}
