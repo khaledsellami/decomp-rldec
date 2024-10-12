@@ -3,7 +3,7 @@
 <h3 align="center">RLDec</h3>
 
   <p align="center">
-    This project is an implementation of the RLDec decomposition approach as described in the paper "Extracting Microservices from Monolithic Systems using Deep Reinforcement Learning" <a href="TODO">(2024)</a>.
+    This project is an implementation of the RLDec decomposition approach as described in the paper "Extracting Microservices from Monolithic Systems using Deep Reinforcement Learning" <a href="https://link.springer.com/article/10.1007/s10664-024-10547-4">(2024)</a>.
 
   </p>
 
@@ -179,13 +179,28 @@ This project only contains the source code of the RLDec implementation. For repr
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
+<!-- CITATION -->
+## Citation
+If this work was useful for your research, please consider citing it:
+```bibtex
+@article{
+rldec,
+title={Extracting microservices from monolithic systems using deep reinforcement learning},
+journal={Empirical Software Engineering},
+author={khaled sellami and Khaled Sellami and Mohamed Aymen Saied},
+doi={10.1007/s10664-024-10547-4},
+url={http://doi.org/10.1007/s10664-024-10547-4},
+year={2025}
+}
+```
+
 
 
 <!-- REFERENCES -->
 ## References
 
 <a id="1">[1]</a> 
-TODO add the reference to the paper when published
+Sellami, K., Saied, M.A. Extracting microservices from monolithic systems using deep reinforcement learning. Empir Software Eng 30, 1 (2025). https://doi.org/10.1007/s10664-024-10547-4
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
