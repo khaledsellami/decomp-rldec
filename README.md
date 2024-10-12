@@ -44,6 +44,7 @@
     <li><a href="#authors">Authors</a></li>
     <li><a href="#version-history">Version History</a></li>
     <li><a href="#artifacts-package">Artifacts Package</a></li>
+    <li><a href="#citation">Citation</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#references">References</a></li>
   </ol>
@@ -173,12 +174,6 @@ Khaled Sellami - [khaledsellami](https://github.com/khaledsellami) - khaled.sell
 
 This project only contains the source code of the RLDec implementation. For reproducing the results of the paper, you can refer to the Artifacts Package in [Figshare](https://figshare.com/articles/software/RLDec_Artifacts_Package/24939159) or [its Github repository](https://github.com/khalsel/RLDec_EMSE_RP).
 
-
-<!-- LICENSE -->
-## License
-
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
-
 <!-- CITATION -->
 ## Citation
 If this work was useful for your research, please consider citing it:
@@ -193,6 +188,12 @@ url={http://doi.org/10.1007/s10664-024-10547-4},
 year={2025}
 }
 ```
+
+
+<!-- LICENSE -->
+## License
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
 
 
